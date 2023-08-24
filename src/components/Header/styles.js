@@ -4,8 +4,7 @@ export const Container = styled.header`
   grid-area: header;
   height: 105px;
   width: 100%;
-  border-bottom-width: 1px;
-  border-bottom-style: solid;
+  border-bottom: 1px solid;
   border-bottom-color: ${({ theme }) => theme.COLORS.BACKGROUND_700};
   display: flex;
   justify-content: space-between;
