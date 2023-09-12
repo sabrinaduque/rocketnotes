@@ -7,14 +7,12 @@ import { FiUser, FiMail, FiLock } from 'react-icons/fi'
 import { Link, useNavigate } from 'react-router-dom'
 
 export function SignUp() {
-  //nome do estado e a função que atualiza o estado
   const [name, setName] = useState("")
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
 
   const navigate = useNavigate()
 
-  //vou passar essa função para o button
   function handleSignUp() {
     if (!name || !email || !password) {
       return alert("Preencha todos os campos!")
@@ -49,8 +47,6 @@ export function SignUp() {
           placeholder="Nome"
           type="text"
           icon={FiUser}
-          //toda vez que o valor do input muda ele vai disparar um evento
-          //aqui ele ta passando o valor que vc digitar para o set name
           onChange={e => setName(e.target.value)}
         />
 
