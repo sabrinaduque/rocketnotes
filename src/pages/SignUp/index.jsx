@@ -11,11 +11,20 @@ export function SignUp() {
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
 
+  function isValidEmail(email) {
+    const emailRegex = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/;
+    return emailRegex.test(email);
+  }
+
   const navigate = useNavigate()
 
   function handleSignUp() {
     if (!name || !email || !password) {
       return alert("Preencha todos os campos!")
+    }
+
+    if (!isValidEmail(email)) {
+      return alert("Email inválido. Por favor, insira um email válido.");
     }
 
     api.post("/users", { name, email, password })
@@ -24,7 +33,7 @@ export function SignUp() {
         navigate("/")
       })
       .catch(error => {
-        if (error.response){
+        if (error.response) {
           alert(error.response.data.message)
         } else {
           alert("Não foi possível cadastrar")
@@ -52,7 +61,7 @@ export function SignUp() {
 
         <Input
           placeholder="E-mail"
-          type="text"
+          type="email"
           icon={FiMail}
           onChange={e => setEmail(e.target.value)}
         />
