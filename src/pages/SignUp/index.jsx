@@ -11,20 +11,11 @@ export function SignUp() {
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
 
-  function isValidEmail(email) {
-    const emailRegex = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/;
-    return emailRegex.test(email);
-  }
-
   const navigate = useNavigate()
 
   function handleSignUp() {
     if (!name || !email || !password) {
       return alert("Preencha todos os campos!")
-    }
-
-    if (!isValidEmail(email)) {
-      return alert("Email inválido. Por favor, insira um email válido.");
     }
 
     api.post("/users", { name, email, password })
@@ -44,7 +35,7 @@ export function SignUp() {
   return (
     <Container>
       <Background />
-      <Form>
+      <Form >
         <h1>Rocket Notes</h1>
         <p>
           Aplicação para salvar e gerenciar seus links úteis.
@@ -79,7 +70,6 @@ export function SignUp() {
           Voltar para o login
         </Link>
       </Form>
-
     </Container>
   )
 }
