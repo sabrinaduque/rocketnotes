@@ -5,7 +5,8 @@ import { Textarea } from "../../components/Textarea"
 import { Section } from "../../components/Section"
 import { NoteItem } from "../../components/NoteItem"
 import { Button } from "../../components/Button"
-import { Link, useNavigate } from 'react-router-dom'
+import { ButtonText } from "../../components/ButtonText"
+import { useNavigate } from 'react-router-dom'
 import { useState } from 'react'
 import { api } from "../../services/api";
 
@@ -25,6 +26,10 @@ export function New() {
     setLinks(prevState => [...prevState, newLink])
     setNewLink("")
   }
+
+  function handleBack() {
+    navigate(-1)
+  } 
 
   function handleRemoveLinks(deleted) {
     setLinks(prevState => prevState.filter(link => link !== deleted))
@@ -60,7 +65,7 @@ export function New() {
     })
 
     alert("Nota criada com sucesso!")
-    navigate("/")
+    navigate(-1)
   }
 
   return (
@@ -70,9 +75,10 @@ export function New() {
         <Form>
           <header>
             <h1>Criar nota</h1>
-            <Link to="/">
-              voltar
-            </Link>
+            <ButtonText 
+              title="voltar"
+              onClick={handleBack}  
+            />
           </header>
 
           <Input
